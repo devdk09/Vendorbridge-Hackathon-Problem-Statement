@@ -9,6 +9,7 @@ npm install
 npm run dev
 ```
 
+Deployment Link: https://vendorbridge-hackathon-problem-stat-eta.vercel.app/login
 Open [http://localhost:3000](http://localhost:3000) — you'll be redirected to the login page.
 
 ## 👤 Demo Accounts
