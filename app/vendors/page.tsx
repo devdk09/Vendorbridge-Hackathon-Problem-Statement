@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,7 +20,7 @@ const emptyVendor: Partial<Vendor> = {
   status: "active", contactPerson: ""
 };
 
-export default function VendorsPage() {
+function VendorsPageContent() {
   const searchParams = useSearchParams();
   const { vendors, addVendor, updateVendor, deleteVendor } = useAppStore();
   const [search, setSearch] = useState("");
@@ -205,5 +205,13 @@ export default function VendorsPage() {
         </DialogContent>
       </Dialog>
     </AppShell>
+  );
+}
+
+export default function VendorsPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div className="text-muted-foreground">Loading...</div></div>}>
+      <VendorsPageContent />
+    </Suspense>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { AppShell } from "@/components/layout/AppShell";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,7 +16,7 @@ import type { RFQ, RFQItem, RFQStatus } from "@/types";
 
 const emptyItem = (): RFQItem => ({ id: Date.now().toString(), product: "", description: "", quantity: 1, unit: "units" });
 
-export default function RFQPage() {
+function RFQPageContent() {
   const searchParams = useSearchParams();
   const { rfqs, vendors, addRFQ, updateRFQ, currentUser } = useAppStore();
   const [search, setSearch] = useState("");
@@ -198,5 +198,13 @@ export default function RFQPage() {
         </DialogContent>
       </Dialog>
     </AppShell>
+  );
+}
+
+export default function RFQPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div className="text-muted-foreground">Loading...</div></div>}>
+      <RFQPageContent />
+    </Suspense>
   );
 }
