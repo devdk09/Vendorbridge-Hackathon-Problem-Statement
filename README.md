@@ -1,6 +1,6 @@
 # VendorBridge — Procurement & Vendor Management ERP
 
-A full-featured ERP platform built with Next.js 15, TypeScript, Tailwind CSS, and Zustand.
+A full-featured ERP platform built with Next.js 15, TypeScript, Tailwind CSS.
 
 ## 🚀 Quick Start
 
